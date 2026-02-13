@@ -1,1 +1,595 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>📱 تحميل تطبيق التفاحة الذهبية | Golden Apple App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<style>
+/* ===== متغيرات CSS ===== */
+:root {
+    --primary: #FF6B9D;
+    --secondary: #9D4EDD;
+    --dark: #0F0A1E;
+    --darker: #090613;
+    --light: #F8F9FA;
+    --success: #00DFA2;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+/* ===== إعدادات عامة ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background: var(--darker);
+    color: var(--light);
+    min-height: 100vh;
+    padding: 16px;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(157, 78, 221, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(255, 107, 157, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(0, 223, 162, 0.08) 0%, transparent 40%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, transparent 49%, rgba(255, 255, 255, 0.02) 50%, transparent 51%),
+        linear-gradient(transparent 49%, rgba(255, 255, 255, 0.02) 50%, transparent 51%);
+    background-size: 50px 50px;
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+/* ===== تأثير الجسيمات ===== */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: floating 20s infinite ease-in-out;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-30px) translateX(15px); }
+    50% { transform: translateY(15px) translateX(-15px); }
+    75% { transform: translateY(-15px) translateX(30px); }
+}
+
+/* ===== الحاوية الرئيسية ===== */
+.download-container {
+    max-width: 480px;
+    width: 100%;
+    background: rgba(15, 10, 30, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 40px 28px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.download-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--gradient);
+    opacity: 0.03;
+    z-index: -1;
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ===== الهيدر ===== */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.app-icon {
+    font-size: 5.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: bounce 3s infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.5));
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.header h1 {
+    font-size: 2.4rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 12px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.header p {
+    color: #B0B0D0;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* ===== معلومات التطبيق ===== */
+.app-info {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 32px;
+    padding: 28px 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.info-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 107, 157, 0.1);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-title {
+    font-size: 0.9rem;
+    color: #B0B0D0;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.info-desc {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--light);
+}
+
+/* ===== زر التحميل ===== */
+.download-btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    background: var(--gradient);
+    border: none;
+    border-radius: 100px;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 25px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+}
+
+.download-btn i {
+    margin-left: 12px;
+    font-size: 1.4rem;
+}
+
+.download-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255, 107, 157, 0.5);
+}
+
+/* ===== قسم التواصل ===== */
+.contact-section {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-title {
+    color: #B0B0D0;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #25D366;
+    color: white;
+    padding: 16px 35px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
+}
+
+.whatsapp-btn:hover {
+    background: #1da851;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn i {
+    font-size: 1.5rem;
+}
+
+/* ===== الميزات ===== */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 30px 0 10px;
+}
+
+.feature {
+    text-align: center;
+    padding: 15px 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feature i {
+    font-size: 1.8rem;
+    color: var(--success);
+    margin-bottom: 8px;
+}
+
+.feature span {
+    display: block;
+    font-size: 0.85rem;
+    color: #B0B0D0;
+    font-weight: 500;
+}
+
+/* ===== التذييل ===== */
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: rgba(136, 136, 170, 0.7);
+    font-size: 0.85rem;
+}
+
+/* ===== تحسينات الجوال ===== */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+    
+    .download-container {
+        padding: 30px 20px;
+        border-radius: 36px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .app-icon {
+        font-size: 4.8rem;
+    }
+    
+    .download-btn {
+        padding: 18px;
+        font-size: 1.2rem;
+    }
+    
+    .features {
+        gap: 10px;
+    }
+    
+    .feature i {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .download-container {
+        padding: 25px 16px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== رسالة التنبيه ===== */
+.alert {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 10, 30, 0.98);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 14px 28px;
+    color: var(--light);
+    font-weight: 600;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    font-size: 0.95rem;
+    text-align: center;
+    pointer-events: none;
+}
+
+.alert.show {
+    opacity: 1;
+}
+
+.alert.success {
+    background: rgba(0, 223, 162, 0.2);
+    border: 1px solid rgba(0, 223, 162, 0.4);
+}
+
+.alert.error {
+    background: rgba(255, 71, 87, 0.2);
+    border: 1px solid rgba(255, 71, 87, 0.4);
+}
+</style>
+</head>
+<body>
+
+<!-- تأثير الجسيمات -->
+<div class="particles" id="particles"></div>
+
+<!-- رسالة التنبيه -->
+<div class="alert" id="alert"></div>
+
+<!-- حاوية التحميل الرئيسية -->
+<div class="download-container">
+    
+    <!-- الهيدر -->
+    <div class="header">
+        <div class="app-icon">🍎</div>
+        <h1>التفاحة الذهبية</h1>
+        <p>تطبيق تحليل المنصات الذكي</p>
+    </div>
+    
+    <!-- معلومات التطبيق -->
+    <div class="app-info">
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="fas fa-code-branch"></i>
+            </div>
+            <div class="info-content">
+                <div class="info-title">الإصدار</div>
+                <div class="info-desc">v2.5.0</div>
+            </div>
+        </div>
+        
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="fas fa-database"></i>
+            </div>
+            <div class="info-content">
+                <div class="info-title">حجم التطبيق</div>
+                <div class="info-desc">28.5 MB</div>
+            </div>
+        </div>
+        
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="info-content">
+                <div class="info-title">آخر تحديث</div>
+                <div class="info-desc">13 فبراير 2026</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- زر التحميل -->
+    <a href="1.apk" class="download-btn" onclick="handleDownload(event)">
+        <i class="fas fa-download"></i> تحميل التطبيق
+    </a>
+    
+    <!-- الميزات -->
+    <div class="features">
+        <div class="feature">
+            <i class="fas fa-bolt"></i>
+            <span>سرعة عالية</span>
+        </div>
+        <div class="feature">
+            <i class="fas fa-shield-alt"></i>
+            <span>آمن 100%</span>
+        </div>
+        <div class="feature">
+            <i class="fas fa-chart-line"></i>
+            <span>تحليل دقيق</span>
+        </div>
+    </div>
+    
+    <!-- قسم التواصل مع المطور -->
+    <div class="contact-section">
+        <div class="contact-title">للحصول على معلومات التفعيل والتواصل مع المطور</div>
+        <a href="https://wa.me/16304894269" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            +1 (630) 489-4269
+        </a>
+        <div style="margin-top: 15px; color: #B0B0D0; font-size: 0.9rem;">
+            <i class="fas fa-clock" style="margin-left: 5px;"></i> متاح 24/7 للدعم الفني
+        </div>
+    </div>
+    
+    <!-- التذييل -->
+    <div class="footer">
+        <p>© 2026 سكربت التفاحة الذهبية - جميع الحقوق محفوظة</p>
+        <p style="margin-top: 8px; font-size: 0.75rem;">Golden Apple Script v2.5.0</p>
+    </div>
+</div>
+
+<script>
+// ===== تهيئة الجسيمات =====
+function initParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 25;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        const size = Math.random() * 6 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        const colors = ['#FF6B9D', '#9D4EDD', '#00DFA2'];
+        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.opacity = Math.random() * 0.4 + 0.1;
+        particle.style.animationDuration = `${Math.random() * 15 + 10}s`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// ===== عرض رسالة تنبيهية =====
+function showAlert(message, type = 'success', duration = 3000) {
+    const alert = document.getElementById('alert');
+    alert.textContent = message;
+    alert.className = `alert ${type} show`;
+    setTimeout(() => alert.classList.remove('show'), duration);
+}
+
+// ===== معالجة حدث التحميل =====
+function handleDownload(event) {
+    // محاولة تحميل الملف
+    const link = event.currentTarget;
+    
+    // التحقق من وجود ملف APK
+    fetch('1.apk', { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+                showAlert('جاري تحميل التطبيق...', 'success');
+            } else {
+                // إذا لم يتم العثور على الملف
+                event.preventDefault();
+                showAlert('سيتم رفع التطبيق قريباً - تواصل مع المطور', 'error');
+                
+                // فتح الواتساب مباشرة
+                window.open('https://wa.me/16304894269', '_blank');
+            }
+        })
+        .catch(() => {
+            // في حالة خطأ الشبكة
+            event.preventDefault();
+            showAlert('تواصل مع المطور للحصول على التطبيق', 'error');
+            window.open('https://wa.me/16304894269', '_blank');
+        });
+}
+
+// ===== إضافة تأثيرات إضافية =====
+window.onload = function() {
+    initParticles();
+    
+    // رسالة ترحيبية
+    setTimeout(() => {
+        showAlert('مرحباً بك في موقع تحميل التطبيق الرسمي', 'success', 4000);
+    }, 500);
+    
+    // إضافة تأثير النقر على زر الواتساب
+    const whatsappBtn = document.querySelector('.whatsapp-btn');
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', function() {
+            showAlert('جاري فتح محادثة واتساب', 'success', 2000);
+        });
+    }
+};
+</script>
+
+</body>
+</html>
